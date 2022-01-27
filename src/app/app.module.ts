@@ -28,6 +28,7 @@ import { IconsPipe } from './core/pipes/icons/icons.pipe';
 import { PracticetoolComponent } from './practicetool/practicetool.component';
 import {ElectronService} from "./core/services";
 import { HttpClientModule } from '@angular/common/http';
+import { SafeHtmlPipe } from './core/pipes/SafeHtmlPipe';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
     CustomiconComponent, 
     MissionsComponent,
     IconsPipe, 
+    SafeHtmlPipe,
     PracticetoolComponent],
   imports: [
     BrowserModule,

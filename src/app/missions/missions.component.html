@@ -15,7 +15,7 @@
         <th>Progress</th>
       </tr>
       <tr *ngFor="let mission of data">
-        <td>{{mission.objective}}</td>
+        <td><div [innerHtml]='mission.objective | safeHtml'></div></td>
         <td>{{mission.currentProgress}}/{{mission.totalProgressCount}}</td>
       </tr>
     </table>

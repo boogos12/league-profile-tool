@@ -1,21 +1,24 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import { Observable } from 'rxjs';
 import {DialogComponent} from "../core/dialog/dialog.component";
 import {LCUConnectionService} from "../core/services/lcuconnection/lcuconnection.service";
 import { VersionService } from '../core/services/version/version.service';
-import { Mission } from './mission';
 
 @Component({
   selector: 'app-missions',
   templateUrl: './missions.component.html',
   styleUrls: ['./missions.component.css']
 })
-export class MissionsComponent implements OnInit{
+
+export class MissionsComponent implements OnInit {
   public data = null;
   public currentVersion = 0;
 
-  constructor(public dialog: MatDialog, private lcuConnectionService: LCUConnectionService, private version: VersionService) {
+  constructor(
+    public dialog: MatDialog, 
+    private lcuConnectionService: LCUConnectionService, 
+    private version: VersionService
+    ) {
   }
 
   async ngOnInit() {
@@ -36,14 +39,14 @@ export class MissionsComponent implements OnInit{
         const epochToday = (new Date).getTime();
         for (let i = 0; i < missions.length; i++) {
           for (let j = 0; j < missions[i].objectives.length; j++){
-            const currentProgress = missions[i].objectives[j].progress.currentProgress;
-            const totalProgressCount = missions[i].objectives[j].progress.totalCount;
-            if (missions[i].isNew == true || (missions[i].endTime >= epochToday && currentProgress < totalProgressCount) && missions[i].objectives[j].status != 'DUMMY'){
+            const mission = missions[i];
+            const objective = mission.objectives[j];
+            if (this.filterOutMissions(mission, objective, epochToday)){
               const mission = {
                 description: missions[i].description,
-                objective: missions[i].objectives[j].description,
-                currentProgress: currentProgress,
-                totalProgressCount: totalProgressCount
+                objective: this.changeStyleOfLinks(missions[i].objectives[j].description),
+                currentProgress: objective.progress.currentProgress,
+                totalProgressCount: objective.progress.totalCount
               }
               if (mission.objective.length > 0){
                 this.data.push(mission);
@@ -53,5 +56,15 @@ export class MissionsComponent implements OnInit{
         }
       }
     });
+  }
+
+  private filterOutMissions(mission: any, objective: any, epochToday: number) : boolean{
+    const currentProgress = objective.progress.currentProgress;
+    const totalProgressCount = objective.progress.totalCount;
+    return mission.isNew == true || (mission.endTime >= epochToday && currentProgress < totalProgressCount) && objective.status != 'DUMMY';
+  }
+
+  private changeStyleOfLinks(input: any) : any{
+    return input.replace('<a href', '<a style="color:white; font-weight: bold;" href');
   }
 }
