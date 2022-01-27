@@ -15,6 +15,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from "@angular/material/dialog";
 import {DialogComponent} from './core/dialog/dialog.component';
 import {ChibiComponent} from './chibi/chibi.component';
+import {MissionsComponent} from './missions/missions.component';
 import {BackgroundComponent} from './background/background.component';
 import {ChampionsPipe} from './core/pipes/champions/champions.pipe';
 import {ChatrankComponent} from './chatrank/chatrank.component';
@@ -29,7 +30,22 @@ import {ElectronService} from "./core/services";
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, StatusComponent, DialogComponent, ChibiComponent, BackgroundComponent, ChampionsPipe, ChatrankComponent, ChampionPurchaseDateComponent, CustomapiComponent, FaqComponent, CustomiconComponent, IconsPipe, PracticetoolComponent],
+  declarations: [
+    AppComponent, 
+    HomeComponent, 
+    StatusComponent, 
+    DialogComponent, 
+    ChibiComponent, 
+    BackgroundComponent, 
+    ChampionsPipe, 
+    ChatrankComponent, 
+    ChampionPurchaseDateComponent, 
+    CustomapiComponent, 
+    FaqComponent, 
+    CustomiconComponent, 
+    MissionsComponent,
+    IconsPipe, 
+    PracticetoolComponent],
   imports: [
     BrowserModule,
     FormsModule,

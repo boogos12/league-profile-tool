@@ -4,5 +4,6 @@ export const endpoints = {
   profile: "/lol-summoner/v1/current-summoner/summoner-profile/",
   friends: "/lol-chat/v1/friends/",
   conversations: "/lol-chat/v1/conversations/",
-  lobby: "/lol-lobby/v2/lobby"
+  lobby: "/lol-lobby/v2/lobby",
+  missions: "/lol-missions/v1/missions"
 };

@@ -1,0 +1,23 @@
+.mat-card{
+  max-width: 25rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+table{
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+th, td {
+  border: 0.5px solid rgb(122, 122, 122);
+  border-radius: 10px;
+}
+
+th, td{
+  padding: 6px;
+}

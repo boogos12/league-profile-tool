@@ -1,15 +1,14 @@
 {
-  "name": "league-profile-tool",
+  "name": "rito-destroyer",
   "version": "2.4.8",
   "description": "Tool that interacts with the Riot LCU",
-  "homepage": "https://github.com/MManoah/league-profile-tool",
-  "author": "Manoah",
+  "author": "boguu",
   "main": "main.js",
   "private": true,
   "scripts": {
     "postinstall": "electron-builder install-app-deps",
     "ng": "ng",
-    "start": "npm-run-all -p electron:serve ng:serve",
+    "start": "npm run electron:serve-tsc && ng build --base-href ./ && npm-run-all -p electron:serve ng:serve",
     "build": "npm run electron:serve-tsc && ng build --base-href ./",
     "build:dev": "npm run build -- -c dev",
     "build:prod": "npm run build -- -c production",
@@ -27,7 +26,7 @@
   },
   "build": {
     "appId": "com.league.app",
-    "productName": "League Profile Tool",
+    "productName": "Rito destroyer",
     "mac": {
       "category": "Utility"
     },

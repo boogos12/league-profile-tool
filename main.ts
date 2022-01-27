@@ -26,6 +26,8 @@ function createWindow(): BrowserWindow {
     icon: path.join(__dirname, '/dist/assets/icon.ico')
   });
 
+  //win.webContents.openDevTools({ mode: "detach" });
+
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'dist/index.html'),
     protocol: 'file:',
