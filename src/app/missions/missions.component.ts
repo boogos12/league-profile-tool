@@ -38,20 +38,26 @@ export class MissionsComponent implements OnInit {
         const missions = JSON.parse(response);
         const epochToday = (new Date).getTime();
         for (let i = 0; i < missions.length; i++) {
+          var objectives = [];
           for (let j = 0; j < missions[i].objectives.length; j++){
-            const mission = missions[i];
-            const objective = mission.objectives[j];
-            if (this.filterOutMissions(mission, objective, epochToday)){
-              const mission = {
-                description: missions[i].description,
-                objective: this.changeStyleOfLinks(missions[i].objectives[j].description),
-                currentProgress: objective.progress.currentProgress,
-                totalProgressCount: objective.progress.totalCount
-              }
-              if (mission.objective.length > 0){
-                this.data.push(mission);
+            const objective = missions[i].objectives[j];
+            if (this.filterOutMissions(missions[i], objective, epochToday)){
+              const objective = {
+                description: this.changeStyleOfLinks(missions[i].objectives[j].description),
+                currentProgress: missions[i].objectives[j].progress.currentProgress,
+                totalProgressCount: missions[i].objectives[j].progress.totalCount
+              } 
+              if (objective.description.length > 0){
+                objectives.push(objective);
               }
             }
+          }
+          const mission = {
+            description: missions[i].description,
+            objectives: objectives
+          }
+          if (mission.objectives.length > 0){
+            this.data.push(mission);
           }
         }
       }
@@ -65,6 +71,6 @@ export class MissionsComponent implements OnInit {
   }
 
   private changeStyleOfLinks(input: any) : any{
-    return input.replace('<a href', '<a style="color:white; font-weight: bold;" href');
+    return input.replace('<a href', '<a style="color:white;" href');
   }
 }
