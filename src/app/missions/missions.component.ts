@@ -38,7 +38,7 @@ export class MissionsComponent implements OnInit{
           for (let j = 0; j < missions[i].objectives.length; j++){
             const currentProgress = missions[i].objectives[j].progress.currentProgress;
             const totalProgressCount = missions[i].objectives[j].progress.totalCount;
-            if (missions[i].isNew == true || (missions[i].endTime >= epochToday && currentProgress < totalProgressCount )){
+            if (missions[i].isNew == true || (missions[i].endTime >= epochToday && currentProgress < totalProgressCount) && missions[i].objectives[j].status != 'DUMMY'){
               const mission = {
                 description: missions[i].description,
                 objective: missions[i].objectives[j].description,
